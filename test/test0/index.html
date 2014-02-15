@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title>HUD Test</title>
+        <style type="text/css">
+            body
+            {
+                margin: 0;
+                padding: 0;
+                color: #FFFFFF;
+                font-family: Arial, Tahoma, sans-serif;
+            }
+
+            .screen
+            {
+                width: 800px;
+                height:500px;
+                background-color: #4444DD;
+            }
+
+            .hud
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 800px;
+                height:500px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="screen"></div>
+        <div class="hud" ng-app="HUDApp">
+            <div ng-view=""></div>
+        </div>
+        <script src="angular.min.js"></script>
+        <script src="../../lib/angular-route/angular-route.js"></script>
+        <script src="../../src/js/hud.js"></script>
+        <script src="main.js"></script>
+        <script src="controllers/main.js"></script>
+    </body>
+</html>

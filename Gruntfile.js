@@ -39,8 +39,11 @@ module.exports = function(grunt) {
                 bare: true
               },
               files: {
-                "<%= dirs.js %>/main.js" : "<%= dirs.coffee %>/main.coffee",
-                "<%= dirs.js %>/hud.js" : "<%= dirs.coffee %>/hud.coffee"
+                "<%= dirs.js %>/hud.js" : [
+                    "<%= dirs.coffee %>/main.coffee",
+                    "<%= dirs.coffee %>/hudService.coffee",
+                    "<%= dirs.coffee %>/hud.coffee"
+                ]
               }
             }
         },
@@ -53,10 +56,7 @@ module.exports = function(grunt) {
             },
             dist: {
               files: {
-                  "<%= dirs.build %>/hud.min.js": [
-                      "<%= dirs.js %>/main.js",
-                      "<%= dirs.js %>/hud.js"
-                  ]
+                  "<%= dirs.build %>/hud.min.js": "<%= dirs.js %>/hud.js"
               }
             }
         },
