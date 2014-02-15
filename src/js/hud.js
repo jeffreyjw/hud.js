@@ -9,8 +9,14 @@ HUD.HUDService = (function() {
 
   HUDService.prototype.map = null;
 
+  HUDService.prototype.events = null;
+
   function HUDService(HUDApp) {
     this.app = HUDApp.app;
+    this.events = {
+      set: [],
+      notifyChange: []
+    };
     this.map = {};
     this._createService();
   }
@@ -26,7 +32,12 @@ HUD.HUDService = (function() {
   };
 
   HUDService.prototype.set = function(key, value) {
-    return this.map[key] = value;
+    this.map[key] = value;
+    return this._callEventListeners("set");
+  };
+
+  HUDService.prototype.notifyChange = function() {
+    return this._callEventListeners("notifyChange");
   };
 
   HUDService.prototype.get = function(key) {
@@ -35,6 +46,21 @@ HUD.HUDService = (function() {
     } else {
       return null;
     }
+  };
+
+  HUDService.prototype._callEventListeners = function(event) {
+    var listener, _i, _len, _ref, _results;
+    _ref = this.events[event];
+    _results = [];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      listener = _ref[_i];
+      _results.push(listener());
+    }
+    return _results;
+  };
+
+  HUDService.prototype.addEventListener = function(event, listener) {
+    return this.events[event].push(listener);
   };
 
   return HUDService;
@@ -62,6 +88,10 @@ HUD.Menu = (function() {
 
   Menu.prototype._createService = function() {
     return this.service = new HUD.HUDService(this);
+  };
+
+  Menu.prototype.addEventListener = function(event, listener) {
+    return this.service.addEventListener(event, listener);
   };
 
   Menu.prototype.set = function(key, value) {

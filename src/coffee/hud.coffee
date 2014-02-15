@@ -26,6 +26,10 @@ class HUD.Menu
     this.service = new HUD.HUDService(this)
 
 
+  addEventListener: (event, listener) ->
+    this.service.addEventListener(event, listener)
+
+
   set: (key, value) ->
     this.service.set(key, value)
 

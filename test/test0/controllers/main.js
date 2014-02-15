@@ -12,6 +12,7 @@ MY.app.controller('MainCtrl', [ "$scope", "$location", "HUDService", function($s
     $scope.back = function()
     {
         HUDService.set("go", "here");
+        HUDService.notifyChange();
         $location.path("/");
     };
 

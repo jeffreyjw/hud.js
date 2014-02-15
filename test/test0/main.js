@@ -6,6 +6,9 @@
     };
 
     var hud = new HUD.Menu(config);
+    hud.addEventListener("notifyChange", function(){
+        console.log(hud.get("go"));
+    });
 
     window.MY = hud;
 
