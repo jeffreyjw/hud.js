@@ -75,15 +75,26 @@ HUD.Menu = (function() {
 
   Menu.prototype.service = null;
 
-  function Menu(config) {
+  Menu.prototype.element = null;
+
+  Menu.prototype.appName = null;
+
+  function Menu(element, config) {
+    this.element = element;
     this.config = config;
+    this.appName = "HUDApp";
     this._createApp();
     this._createService();
     this._configureApp();
+    this._runApp();
   }
 
   Menu.prototype._createApp = function() {
-    return this.app = angular.module('HUDApp', ['ngRoute']);
+    return this.app = angular.module(this.appName, ['ngRoute']);
+  };
+
+  Menu.prototype._runApp = function() {
+    return angular.bootstrap(this.element, [this.appName]);
   };
 
   Menu.prototype._createService = function() {

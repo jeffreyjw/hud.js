@@ -5,7 +5,7 @@
         "/second": { controller: "MainCtrl", templateUrl: "views/second.html" }
     };
 
-    var hud = new HUD.Menu(config);
+    var hud = new HUD.Menu(document.getElementById("hudApp"), config);
     hud.addEventListener("notifyChange", function(){
         console.log(hud.get("go"));
     });
