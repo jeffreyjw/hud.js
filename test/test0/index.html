@@ -34,10 +34,14 @@
         <div class="hud" id="hudApp">
             <div ng-view=""></div>
         </div>
-        <script src="angular.min.js"></script>
+        <script src="../../lib/angular/angular.js"></script>
         <script src="../../lib/angular-route/angular-route.js"></script>
         <script src="../../src/js/hud.js"></script>
         <script src="main.js"></script>
         <script src="controllers/main.js"></script>
+        <script>
+            // HUD.Menu instance
+            MY.run();
+        </script>
     </body>
 </html>

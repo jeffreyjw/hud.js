@@ -86,14 +86,13 @@ HUD.Menu = (function() {
     this._createApp();
     this._createService();
     this._configureApp();
-    this._runApp();
   }
 
   Menu.prototype._createApp = function() {
     return this.app = angular.module(this.appName, ['ngRoute']);
   };
 
-  Menu.prototype._runApp = function() {
+  Menu.prototype.run = function() {
     return angular.bootstrap(this.element, [this.appName]);
   };
 

@@ -21,14 +21,12 @@ class HUD.Menu
     this._createService()
     this._configureApp()
 
-    this._runApp()
-
 
   _createApp: () ->
     this.app = angular.module(this.appName, [ 'ngRoute' ])
 
 
-  _runApp: () ->
+  run: () ->
     angular.bootstrap(this.element, [ this.appName ])
 
 
