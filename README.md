@@ -1,7 +1,9 @@
 HUD.js
 ===
 
-A JavaScript Library
+A HUD library for Javascript, which aims to be a bridge
+for HTML5+Angular to be as useful for browser games
+as flash for AAA games.
 
 ### Maintainer
 
@@ -9,27 +11,69 @@ A JavaScript Library
 
 ### Get Started
 
-Install dependencies
+Add angular to your page
 
-`sudo npm install && bower install`
+`<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>`
+`<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>`
 
-Build Project
+AFTER adding angular, add HUD
 
-`grunt`
+`<script src="hud.min.js"></script>`
 
-Run Tests
-
-Open `SpecRunner.html` in your browser and test with jasmine
+You can check out `test/test0/index.html` for an example
 
 ### How to use
 
+First thing we need to do is preparation of a config object
 
 ```javascript
-//Get Version
-yourLibrary.version;
+var config = {
+    "/": { controller: "MenuController", templateUrl: "main.html" },
+    "/game": { controller: "GameHUDController", templateUrl: "gamehud.html" }
+};
+```
 
-//say Hello World
-yourLibrary.hello();
+The idea is taken straight from angular: we specify the url which we will use
+inside our HUD Controllers, the name of the controllers (not yet created) and urls
+to html files which will be the look of our HUD/Menu systems. If you like, you can use
+a single controller in multiple urls.
+
+Then we create the main object:
+
+```javascrpt
+var hud = new HUD.Menu(config);
+```
+
+Now, we have the ability to create controllers using `hud.app`.
+This is a standard angular controller.
+
+```javascript
+hud.app.controller("MenuController", ["$scope", "HUDService", function($scope, HUDService){
+    $scope.setOption = function(){
+        HUDService.set("option", "ok");
+    };
+
+    $scope.init = function(){ ... some init code... };
+    $scope.init();
+}]);
+```
+
+The HUDService is our bridge between HUD and rest of the page. To react on some variable change:
+
+```javascript
+hud.addEventListener('set', function(){ ... });
+```
+
+and if we don't want to react on every single change in HUDService, only for example after many changes
+just to react for settings apply, use `HUDService.notifyChange()` in the controller, and
+use `hud.addEventListener('notifyChange', function(){ ... });` in the rest of the code.
+
+Last but not least, the HTML:
+
+```
+<div>
+    <button ng-click="setOption()">Save</button>
+</div>
 ```
 
 ### License
