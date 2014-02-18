@@ -48,3 +48,11 @@ class HUD.HUDService
   addEventListener: (event, listener) ->
     this.events[event].push(listener)
 
+
+  removeEventListener: (event, listener) ->
+    index = this.events[event].indexOf(listener)
+    this.events[event].splice(index, 1)
+
+
+  clearEventListeners: (event) ->
+    this.events[event] = []

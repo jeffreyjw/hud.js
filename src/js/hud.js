@@ -63,6 +63,16 @@ HUD.HUDService = (function() {
     return this.events[event].push(listener);
   };
 
+  HUDService.prototype.removeEventListener = function(event, listener) {
+    var index;
+    index = this.events[event].indexOf(listener);
+    return this.events[event].splice(index, 1);
+  };
+
+  HUDService.prototype.clearEventListeners = function(event) {
+    return this.events[event] = [];
+  };
+
   return HUDService;
 
 })();
@@ -102,6 +112,14 @@ HUD.Menu = (function() {
 
   Menu.prototype.addEventListener = function(event, listener) {
     return this.service.addEventListener(event, listener);
+  };
+
+  Menu.prototype.removeEventListener = function(event, listener) {
+    return this.service.removeEventListener(event, listener);
+  };
+
+  Menu.prototype.clearEventListeners = function(event) {
+    return this.service.clearEventListeners(event);
   };
 
   Menu.prototype.set = function(key, value) {

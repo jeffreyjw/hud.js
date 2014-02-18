@@ -38,6 +38,14 @@ class HUD.Menu
     this.service.addEventListener(event, listener)
 
 
+  removeEventListener: (event, listener) ->
+    this.service.removeEventListener(event, listener)
+
+
+  clearEventListeners: (event) ->
+    this.service.clearEventListeners(event)
+
+
   set: (key, value) ->
     this.service.set(key, value)
 
