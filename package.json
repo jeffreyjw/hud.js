@@ -1,17 +1,17 @@
 {
-  "name": "yourlibrary",
+  "name": "hud.js",
   "version": "0.1.0",
-  "title": "YourLibrary",
-  "homepage": "http://chris.enytc.com",
-  "description": "A JavaScript Library",
+  "title": "HUD.js",
+  "homepage": "http://github.com/jeffreyjw",
+  "description": "HUD for games in Javascript",
   "author": {
-    "name": "Christopher EnyTC",
-    "url": "http://chris.enytc.com",
-    "email": "chrisenytc@gmail.com"
+    "name": "Jeffreyjw",
+    "url": "http://github.com/jeffreyjw",
+    "email": "jjwojtczak@gmail.com"
   },
   "repository": {
       "type": "git",
-      "url": "https://github.com/chrisenytc/generator-library.git"
+      "url": "https://github.com/jeffreyjw/hud.js.git"
   },
   "keywords": [
       "vpl",
@@ -19,12 +19,12 @@
       "library"
   ],
   "bugs": {
-      "url": "https://github.com/chrisenytc/generator-library/issues"
+      "url": "https://github.com/jeffreyjw/hud.js/issues"
   },
   "licenses": [
       {
           "type": "MIT",
-          "url": "https://github.com/chrisenytc/generator-library/blob/master/LICENSE"
+          "url": "https://github.com/jeffreyjw/hud.js/blob/master/LICENSE"
       }
   ],
   "dependencies": {},
